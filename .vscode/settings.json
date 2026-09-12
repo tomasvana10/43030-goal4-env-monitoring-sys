@@ -1,0 +1,5 @@
+{
+  "biome.enabled": false,
+  "basedpyright.disableLanguageServices": true,
+  "editor.tabSize": 4
+}

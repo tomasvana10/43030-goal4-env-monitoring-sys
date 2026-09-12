@@ -1,0 +1,4 @@
+{
+  "makefile.configureOnOpen": true,
+  "platformio-ide.autoRebuildAutocompleteIndex": false,
+}
