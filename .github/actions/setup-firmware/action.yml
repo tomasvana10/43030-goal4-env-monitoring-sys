@@ -1,0 +1,27 @@
+name: Initialise firmware build
+description: Install PlatformIO and write WiFi credentials and cerficiate
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v7
+      with:
+        python-version: "3.13"
+
+    - uses: actions/cache@v6
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.platformio/.cache
+          ~/.platformio/packages
+          ~/.platformio/platforms
+        key: ${{ runner.os }}-pio-${{ hashFiles('pio_project/platformio.ini') }}
+
+    - name: Install PlatformIO
+      shell: bash
+      run: pip install --upgrade platformio
+
+    - name: Write Credentials and Certificate
+      shell: bash
+      working-directory: pio_project
+      run: make include/secrets.h certs/fullchain.pem
